@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/inicio/Home.vue'
 import PlaList from '../views/planillas/Listar'
 import Login from '../views/auth/Login'
+import Registro from '../views/auth/Registro'
+import store from '../store'
 
 Vue.use(VueRouter)
 
@@ -21,6 +23,22 @@ const routes = [
     path: '/login',
     name: 'login',
     component: Login,
+    meta: {
+      nologeado: true,
+      progress: {
+        func: [
+          {call: 'color', modifier: 'temp', argument: '#007fe2'},
+          {call: 'fail', modifier: 'temp', argument: '#6e0000'},
+          {call: 'location', modifier: 'temp', argument: 'top'},
+          {call: 'transition', modifier: 'temp', argument: {speed: '1.5s', opacity: '0.6s', termination: 400}}
+        ]
+      }
+    }
+  },
+  {
+    path: '/registro',
+    name: 'registro',
+    component: Registro,
     meta: {
       nologeado: true,
       progress: {
